@@ -2,39 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Personal Portfolio of a Web Developer">
-  <meta name="keywords" content="Portfolio, Web Developer, Projects">
-  <meta name="author" content="Jina Lako">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <meta name="description" content="Portfolio of a web developer">
+  <meta name="keywords" content="portfolio, web development, HTML, CSS, JavaScript">
+  <meta name="author" content="Saleem">
+  <title>Home | My Portfolio</title>
   <link rel="stylesheet" href="index.css">
-  <script defer src="web.js"></script>
+  <script src="web.js" defer></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      float: right;
+      margin-left: 20px;
+    }
+    h1, h2, p {
+      color: black;
+    }
+    header, .horizontal-nav {
+      background-color: #302637; /* Dark purple */
+    }
+    footer {
+      background-color: #302637;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      margin-top: auto;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode p {
+      color: #e0e0e0;
+    }
+    body.dark-mode .profile-pic {
+      filter: brightness(0.9);
+    }
+    .theme-toggle {
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      background-color: #302637;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .theme-toggle:hover {
+      background-color: #44304e;
+    }
+  </style>
 </head>
-<body onload="greetUser()">
-  <div class="wrapper">
+<body>
+  <div class="page-container">
     <header>
-      <div class="logo"><h1>My Portfolio</h1></div>
       <nav>
-        <ul>
+        <ul class="horizontal-nav">
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Me</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="survey.html">Survey</a></li>
         </ul>
       </nav>
     </header>
-
     <main>
+      <h1>My Portfolio</h1>
+      <img src="saleem.jpeg" alt="Profile Picture" class="profile-pic">
+      <p>This is the homepage of a web developer showcasing projects, skills, and contact info.</p>
+      <button class="theme-toggle" onclick="toggleTheme(); saveTheme();">Toggle Dark/Light Mode</button>
       <section>
-        <h2>Hello!</h2>
-        <p>This is my personal portfolio website built with HTML, CSS, and JavaScript.</p>
+        <h2>My Location</h2>
+        <iframe src="https://www.google.com/maps/embed?..." width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </section>
     </main>
-
     <footer>
-      <p>&copy; 2025 saleem. All rights reserved.</p>
+      <p>&copy; 2025 Saleem. All rights reserved.</p>
     </footer>
   </div>
+  <script>
+    function saveTheme() {
+      const isDark = document.body.classList.contains("dark-mode");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    }
+
+    function applySavedTheme() {
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+    }
+
+    window.onload = applySavedTheme;
+  </script>
 </body>
 </html>

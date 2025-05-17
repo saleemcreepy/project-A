@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="web.js" defer></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+    header, .horizontal-nav {
+      background-color: #302637;
+      color: white;
+    }
+    footer {
+      background-color: #302637;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      margin-top: auto;
+    }
+    h1, h2, p {
+      color: black;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode p {
+      color: #e0e0e0;
+    }
+    body.dark-mode .details {
+      color: #cfcfcf;
+    }
+    .project-images {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .project-images div {
+      max-width: 300px;
+    }
+    .project-images img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    .project-images p {
+      margin-top: 10px;
+      color: black;
+    }
+    body.dark-mode .project-images p {
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <header>
+      <nav>
+        <ul class="horizontal-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="survey.html">Survey</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>My Projects</h1>
+      <div class="three-column">
+        <div class="project">
+          <h2>Portfolio Website</h2>
+          <p>This website you're currently viewing!</p>
+          <button onclick="toggleDetails('p1')">Details</button>
+          <p id="p1" class="details hidden">Built with HTML, CSS, and JS. Responsive and accessible.</p>
+        </div>
+        <div class="project">
+          <h2>Task Manager App</h2>
+          <p>A simple task manager built with vanilla JavaScript.</p>
+          <button onclick="toggleDetails('p2')">Details</button>
+          <p id="p2" class="details hidden">Includes add/edit/delete features and localStorage support.</p>
+        </div>
+        <div class="project">
+          <h2>Weather Dashboard</h2>
+          <p>Real-time weather updates using API integration.</p>
+          <button onclick="toggleDetails('p3')">Details</button>
+          <p id="p3" class="details hidden">Uses Fetch API to get weather data and displays it dynamically.</p>
+        </div>
+      </div>
+
+      <section class="project-images">
+        <div>
+          <img src="project1.jpg" alt="Screenshot of Project 1">
+          <p>Project 1: Robotics system designed for obstacle avoidance and pathfinding.</p>
+        </div>
+        <div>
+          <img src="project2.jpg" alt="Screenshot of Project 2">
+          <p>Project 2: A software solution for managing academic coursework and deadlines.</p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 Saleem. All rights reserved.</p>
+    </footer>
+  </div>
+  <script>
+    function applySavedTheme() {
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+    }
+    window.onload = applySavedTheme;
+  </script>
+</body>
+</html>

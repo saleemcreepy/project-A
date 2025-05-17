@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="web.js" defer></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+    header, .horizontal-nav {
+      background-color: #302637;
+      color: white;
+    }
+    footer {
+      background-color: #302637;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      margin-top: auto;
+    }
+    h1, label, legend {
+      color: black;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    fieldset {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+    }
+    textarea, input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #302637;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #44304e;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode h1,
+    body.dark-mode label,
+    body.dark-mode legend {
+      color: #e0e0e0;
+    }
+    body.dark-mode form {
+      background-color: #1e1e1e;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    body.dark-mode textarea,
+    body.dark-mode input[type="text"],
+    body.dark-mode input[type="email"] {
+      background-color: #2c2c2c;
+      color: #f1f1f1;
+      border: 1px solid #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <header>
+      <nav>
+        <ul class="horizontal-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="survey.html">Survey</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Quick Survey</h1>
+      <form id="surveyForm">
+        <fieldset>
+          <legend>Experience Level</legend>
+          <label><input type="radio" name="experience" value="beginner" required> Beginner</label><br>
+          <label><input type="radio" name="experience" value="intermediate"> Intermediate</label><br>
+          <label><input type="radio" name="experience" value="advanced"> Advanced</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Technologies Known</legend>
+          <label><input type="checkbox" name="tech" value="html"> HTML</label><br>
+          <label><input type="checkbox" name="tech" value="css"> CSS</label><br>
+          <label><input type="checkbox" name="tech" value="js"> JavaScript</label><br>
+          <label><input type="checkbox" name="tech" value="python"> Python</label>
+        </fieldset>
+
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+        <input type="submit" value="Submit">
+      </form>
+    </main>
+    <footer>
+      <p>&copy; 2025 Saleem. All rights reserved.</p>
+    </footer>
+  </div>
+  <script>
+    function applySavedTheme() {
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+    }
+    window.onload = applySavedTheme;
+  </script>
+</body>
+</html>
